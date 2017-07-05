@@ -28,6 +28,10 @@ $app->get('/plain', function() use($app) {
     return cowspell($plain = true);
 });
 
+$app->get('/info', function() use($app) {
+    return '<a href="https://github.com/scratchers/icanhazcowspell.gq">https://github.com/scratchers/icanhazcowspell.gq</a>';
+});
+
 $app->run();
 
 function cowspell(bool $plain = false) : string
