@@ -23,8 +23,13 @@ $app->get('/heroku', function() use($app) {
 $app->get('/', function() use($app) {
     $json = file_get_contents('https://raw.githubusercontent.com/duckduckgo/zeroclickinfo-goodies/master/share/goodie/cheat_sheets/json/harry-potter-spells.json');
     $data = json_decode($json, $array = true);
-    $spell = $data['sections']['A'][0]['key'];
-    return "<pre>".\Cowsayphp\Cow::say($spell)."</pre>";
+
+    $section = array_rand($data['sections']);
+    $index = array_rand($data['sections'][$section]);
+    $spell = $data['sections'][$section][$index]['key'];
+    $value = $data['sections'][$section][$index]['val'];
+
+    return "<pre>".\Cowsayphp\Cow::say($spell.PHP_EOL.$value)."</pre>";
 });
 
 $app->run();
