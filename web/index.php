@@ -2,8 +2,7 @@
 
 require(__DIR__.'/../vendor/autoload.php');
 
-$app = new Silex\Application();
-$app['debug'] = true;
+$app = new Silex\Application;
 
 // Register the monolog logging service
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
@@ -18,12 +17,10 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 // Our web handlers
 
 $app->get('/heroku', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('index.twig');
 });
 
 $app->get('/', function() use($app) {
-  $app['monolog']->addDebug('cowsay');
   return "<pre>".\Cowsayphp\Cow::say("Cool beans")."</pre>";
 });
 
