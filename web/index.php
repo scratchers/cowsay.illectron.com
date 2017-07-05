@@ -29,7 +29,7 @@ $app->get('/plain', function() use($app) {
 });
 
 $app->get('/info', function() use($app) {
-    return '<a href="https://github.com/scratchers/icanhazcowspell.gq">https://github.com/scratchers/icanhazcowspell.gq</a>';
+    return '<!DOCTYPE html><body><a href="https://github.com/scratchers/icanhazcowspell.gq">https://github.com/scratchers/icanhazcowspell.gq</a></body></html>';
 });
 
 $app->run();
@@ -50,5 +50,5 @@ function cowspell(bool $plain = false) : string
         return $cowspell;
     }
 
-    return "<pre>$cowspell</pre>";
+    return "<!DOCTYPE html><body><pre>$cowspell</pre></body></html>";
 }
